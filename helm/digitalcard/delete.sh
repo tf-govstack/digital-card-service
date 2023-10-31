@@ -7,7 +7,7 @@ if [ $# -ge 1 ] ; then
 fi
 
 function Deleting_digitalcard() {
-  NS=digitalcard
+  NS=idbb-mosip
   while true; do
       read -p "Are you sure you want to delete digital-card-service helm chart?(Y/n) " yn
       if [ $yn = "Y" ]

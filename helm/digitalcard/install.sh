@@ -7,7 +7,7 @@ if [ $# -ge 1 ] ; then
 fi
 
 
-NS=digitalcard
+NS=idbb-mosip
 CHART_VERSION=12.0.2
 
 echo Create $NS namespace
@@ -18,12 +18,12 @@ function installing_digitalcard() {
   kubectl label ns $NS istio-injection=enabled --overwrite
   helm repo update
 
-  echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
-  ./copy_cm.sh
+#  echo Copy configmaps
+#  sed -i 's/\r$//' copy_cm.sh
+#  ./copy_cm.sh
 
   echo Installing digital card service
-  helm -n $NS  install  digitalcard mosip/digitalcard --wait  --version $CHART_VERSION
+  helm -n $NS  install  digitalcard mosip/digitalcard --set image.repository=tfgovstackdev/digital-card-service --set imgage.tag=tf-develop --wait   --version $CHART_VERSION
   return 0
 }
 
