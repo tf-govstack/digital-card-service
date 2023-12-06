@@ -23,7 +23,7 @@ function installing_digitalcard() {
   ./copy_cm.sh
 
   echo Installing digital card service
-  helm -n $NS  install  digitalcard mosip/digitalcard --wait  --version $CHART_VERSION
+  helm -n $NS  install  digitalcard mosip/digitalcard --set image.repository=tfgovstackdev --set image.tag=develop --wait  --version $CHART_VERSION
   return 0
 }
 
